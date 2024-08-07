@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
-import { FeaturedWorkContext } from "../contextApi/FeaturedContext"; // Adjust path as needed
-import '../css/brandview.css'
-const BrandImages = () => {
-  const { selectedWork } = useContext(FeaturedWorkContext);
+import { useParams } from 'react-router-dom';
+import '../css/brandview.css';
+import axiosInstance from "../config/axios";
 
+const BrandImages = () => {
+  const { workId } = useParams();
+  const [selectedWork, setSelectedWork] = useState(null);
   const [currentBrandImageIndex, setCurrentBrandImageIndex] = useState(0);
 
   const brandImageSpring = useSpring({
@@ -13,7 +15,19 @@ const BrandImages = () => {
     reset: true,
   });
 
-  // Handle brand images cycling
+  useEffect(() => {
+    const fetchSelectedWork = async () => {
+      try {
+        const response = await axiosInstance.get(`/featured-work/${workId}`);
+        setSelectedWork(response.data);
+      } catch (err) {
+        console.error("Failed to fetch the selected work", err);
+      }
+    };
+
+    fetchSelectedWork();
+  }, [workId]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (selectedWork?.brandImages.length) {

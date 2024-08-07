@@ -1,17 +1,34 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "../index.css";
-import { FeaturedWorkContext } from "../contextApi/FeaturedContext";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../config/axios";
 
 const Portfolio = () => {
-  const { featuredWork, setSelectedWork, loading, error } = useContext(FeaturedWorkContext);
+  const [featuredWork, setFeaturedWork] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate('');
+
+  useEffect(() => {
+    const fetchFeaturedWork = async () => {
+      try {
+        const response = await axiosInstance.get("/featured-work");  // Adjust the endpoint as needed
+        setFeaturedWork(response.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFeaturedWork();
+  }, []);
+
   const handleImageClick = (work) => {
-    setSelectedWork(work);
     if (work.imageType === "laptopMobileView") {
-      navigate('/mobile-features');
+      navigate(`/mobile-features/${work._id}`);
     } else {
-      navigate('/brand-features');
+      navigate(`/brand-features/${work._id}`);
     }
   };
 
