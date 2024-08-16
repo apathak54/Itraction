@@ -34,9 +34,9 @@ const Portfolio = () => {
 
   if (error) return <div>Error: {error.message}</div>;
   return (
-    <div className="service flex flex-col justify-center items-center p-8">
+    <div id="portfolio" className="service flex flex-col justify-center items-center p-8 dark:bg-black">
       <div className="service-heading text-center items-center">
-        <h1 className="text-4xl sm:text-5xl xl:text-6xl text-white dark:text-black font-medium pb-8 leading-tight">
+        <h1 className="text-4xl sm:text-5xl xl:text-6xl text-black dark:text-white font-medium pb-8 leading-tight">
           featured
           <span className="text-[#04ABE2]"> works</span>
         </h1>
@@ -44,7 +44,7 @@ const Portfolio = () => {
 
       <div className="service-content text-center items-center px-0 sm:px-20 md:px-28 lg:px-40 pt-3 pb-14">
         <p className="flex flex-wrap text-lg md:text-xl lg:text-2xl text-[#999999]">
-          Look at how businesses have leveraged our services to excel at what
+          look at how businesses have leveraged our services to excel at what
           they do. We are excited to add you to our list of happy clients.
         </p>
       </div>
@@ -113,7 +113,7 @@ const Portfolio = () => {
         ) : featuredWork.map(work => (
           <div
             key={work._id}
-            className="flex flex-col items-center bg-gradient-to-b from-[#04ABE2] to-[#20A5FA] rounded-2xl p-8 w-[350px] sm:w-[400px] lg:w-[33%] xl:w-[20%] hover:border hover:border-[#04ABE2] hover:bg-none"
+            className="flex flex-col items-center bg-gradient-to-b from-[#04ABE2] to-[#20A5FA] rounded-2xl p-8 w-[350px] sm:w-[400px] max-w-[90%] lg:w-[33%] xl:w-[20%] dark:hover:border dark:hover:border-[#20A5FA] dark:hover:bg-none"
 
           >
             <img src={work.image} alt={work.metadataimage} className="w-[250px] h-[250px] rounded-lg object-hidden" />
@@ -121,7 +121,7 @@ const Portfolio = () => {
               {work.metadataimage}
             </h2>
 
-            <button onClick={() => handleImageClick(work)} className="featured-btn absolute bottom-0 flex items-center gap-2 bg-white text-black text-xl px-4 py-2 rounded-full">
+            <button onClick={() => handleImageClick(work)} className="featured-btn absolute bottom-0 flex items-center gap-2 bg-white text-black hover:text-white text-xl px-4 py-2 rounded-full hover:border dark:hover:border-none hover:border-black">
               <span>view case study</span>
               <img
                 src="../assets/arrow_diag.png"
@@ -133,10 +133,12 @@ const Portfolio = () => {
         ))}
       </div>
 
-      <div className="flex gap-6 cursor-pointer py-14">
-        <img src="../assets/arrow_left.png" alt="" />
-        <img src="../assets/arrow_right.png" alt="" />
-      </div>
+      {/* <div className="hidden xl:flex gap-6 cursor-pointer py-14">
+        <img src="../assets/arrow_left.png" alt="arrow-left" className="dark:hidden" />
+        <img src="../assets/arrow_right.png" alt="arrow-right" className="dark:hidden" />
+        <img src="../assets/arrow_left_dark.png" alt="arrow-left" className="hidden dark:block" />
+        <img src="../assets/arrow_right_dark.png" alt="arrow-right" className="hidden dark:block" />
+      </div> */}
     </div>
   );
 };
