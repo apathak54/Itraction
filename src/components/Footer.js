@@ -189,7 +189,7 @@ const Footer = () => {
       <div>
         <div className="copyright pb-2 text-center">
           <span className="font-bold">A Venture of <a href="https://www.adirayglobal.com/" target="_blank" rel="noreferrer">Adiray</a></span> <br />
-          © 2024 <span className="text-[#04abe2]">traction.</span> All Rights
+          © 2024 <span className="text-[#04abe2]">iTraction.</span> All Rights
           Reserved.
         </div>
       </div>
