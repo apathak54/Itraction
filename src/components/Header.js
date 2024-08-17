@@ -75,7 +75,7 @@ const Header = () => {
               offset={-70}
               duration={100}
             >
-              Service
+              Service check
             </Link>
           </li>
           <li className="cursor-pointer tracking-wide hover:text-[#04abe2]">
