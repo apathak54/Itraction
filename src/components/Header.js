@@ -75,7 +75,7 @@ const Header = () => {
               offset={-70}
               duration={100}
             >
-              Service check
+              Service
             </Link>
           </li>
           <li className="cursor-pointer tracking-wide hover:text-[#04abe2]">
@@ -85,7 +85,7 @@ const Header = () => {
               spy={true}
               smooth={true}
               offset={-70}
-              
+
               duration={100}
             >
 
