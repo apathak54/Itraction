@@ -75,7 +75,7 @@ const Laptop = () => {
         <motion.div
           key={index}
           className={`circle circle-${index + 1}`}
-          custom={index}
+          custom={index}o
           initial="hidden"
           animate="visible"
           variants={circleVariants}
